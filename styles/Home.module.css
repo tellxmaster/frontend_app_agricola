@@ -133,7 +133,7 @@
   flex-direction: column; /* Alinea los hijos verticalmente */
   justify-content: center; /* Centrado vertical */
   align-items: center; /* Centrado horizontal */
-  height: 100vh; /* Altura total de la ventana del navegador */
+  min-height: 100px; /* Altura mínima inicial */
   width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
   max-width: 800px; /* Máximo ancho del formulario */
   margin: auto; /* Centrado horizontal y ayuda al centrado vertical */
