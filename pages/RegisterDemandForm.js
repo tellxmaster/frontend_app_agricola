@@ -1,17 +1,13 @@
-// RegisterDemandForm.js
 import React, { useState } from 'react';
-import styles from '../styles/Home.module.css'
 
 const RegisterDemandForm = () => {
-  const [productName, setProductName] = useState('');
-  const [initialQuantity, setInitialQuantity] = useState('');
-  const [finalQuantity, setFinalQuantity] = useState('');
-  const [initialPrice, setInitialPrice] = useState('');
-  const [finalPrice, setFinalPrice] = useState('');
-
-  const [percentageChangeInPrice, setPercentageChangeInPrice] = useState('');
-  const [priceElasticityOfDemand, setPriceElasticityOfDemand] = useState('');
-  const [percentageChangeInQuantity, setPercentageChangeInQuantity] = useState('');
+  const [empresa, setEmpresa] = useState('');
+  const [producto, setProducto] = useState('');
+  const [cantidad, setCantidad] = useState(400);
+  const [direccionEntrega, setDireccionEntrega] = useState('');
+  const [precioOfertado, setPrecioOfertado] = useState('');
+  const [total, setTotal] = useState('');
+  const [observaciones, setObservaciones] = useState('');
 
   const handleBack = () => {
     window.location.href = '/';
@@ -19,136 +15,84 @@ const RegisterDemandForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Lógica para procesar los datos del formulario
+    console.log("Formulario enviado", { empresa, producto, cantidad, direccionEntrega, precioOfertado, total, observaciones });
+  };
 
-    // Calcular el cambio porcentual en el precio
-    const changeInPrice = finalPrice - initialPrice;
-    const percentageChange = ((changeInPrice / initialPrice) * 100).toFixed(2);
-    setPercentageChangeInPrice(percentageChange);
-
-    // Calcular el cambio porcentual en la cantidad demandada
-    const changeInQuantity = finalQuantity - initialQuantity;
-    const quantityPercentageChange = ((changeInQuantity / initialQuantity) * 100).toFixed(2);
-    setPercentageChangeInQuantity(quantityPercentageChange);
-
-    // Calcular la elasticidad precio de la demanda (EPD)
-    const EPD = (quantityPercentageChange / percentageChange).toFixed(2);
-    setPriceElasticityOfDemand(EPD);
-
-    console.log({
-      productName,
-      initialQuantity,
-      finalQuantity,
-      initialPrice,
-      finalPrice,
-      percentageChangeInPrice: percentageChange,
-      percentageChangeInQuantity: quantityPercentageChange,
-      priceElasticityOfDemand: EPD,
-    });
+  const handleReset = () => {
+    // Restablecer los valores del formulario a sus valores por defecto o vacíos
+    setEmpresa('');
+    setProducto('');
+    setCantidad(400);
+    setDireccionEntrega('');
+    setPrecioOfertado('');
+    setTotal('');
+    setObservaciones('');
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h2 className={styles.title}>Registro de Demanda de Producto</h2>
-      <p className={styles.description}>
-      Este formulario permite registrar la demanda de un producto específico:
-      </p>
-      <p className={styles.description}>
-      Calcula el cambio porcentual en el precio. Calcula el cambio porcentual en la cantidad demandada. Calcula la elasticidad de la demanda (EPD)
-      </p>
-      <p className={styles.description}>
-      Proporciona información detallada para obtener un análisis preciso de la demanda:
-      </p>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formField}>
-          <label htmlFor="productName">Nombre del Producto X:</label>
-          <input
-            type="text"
-            id="productName"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
-            placeholder="Ingresa el nombre del producto"
-          />
-        </div>
-        <div className={styles.formField}>
-          <label htmlFor="initialQuantity">Cantidad demandada inicial (Q1):</label>
-          <input
-            type="number"
-            id="initialQuantity"
-            value={initialQuantity}
-            onChange={(e) => setInitialQuantity(e.target.value)}
-            placeholder="Especifica la cantidad vendida inicialmente"
-          />
-        </div>
-        <div className={styles.formField}>
-          <label htmlFor="finalQuantity">Cantidad demandada final (Q2):</label>
-          <input
-            type="number"
-            id="finalQuantity"
-            value={finalQuantity}
-            onChange={(e) => setFinalQuantity(e.target.value)}
-            placeholder="Especifica la cantidad vendida final"
-          />
-        </div>
-        <div className={styles.formField}>
-          <label htmlFor="initialPrice">Precio inicial del producto(P1):</label>
-          <input
-            type="number"
-            id="initialPrice"
-            value={initialPrice}
-            onChange={(e) => setInitialPrice(e.target.value)}
-            placeholder="Especifica el precio de venta inicial"
-          />
-        </div>
-        <div className={styles.formField}>
-          <label htmlFor="finalPrice">Precio final del producto(P2):</label>
-          <input
-            type="number"
-            id="finalPrice"
-            value={finalPrice}
-            onChange={(e) => setFinalPrice(e.target.value)}
-            placeholder="Especifica el precio de venta final"
-          />
-        </div>
-        <div className={styles.formField}>
-          <button type="submit" className={styles.button}>Registrar Demanda</button>
-        </div>
-        {percentageChangeInPrice && priceElasticityOfDemand && percentageChangeInQuantity && (
-          <>
-            <div className={styles.formField}>
-              <label>Cambio porcentual en el precio:</label>
-              <input
-                type="text"
-                readOnly
-                value={`${percentageChangeInPrice}%`}
-                placeholder="Cambio porcentual en el precio"
-              />
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          <div className="card border-primary shadow">
+            <div className="card-header bg-primary text-white text-center">
+              <h2>Formulario de Demanda</h2>
+              <h3>Módulo de Demanda de Productos</h3>
             </div>
-            <div className={styles.formField}>
-              <label>Cambio porcentual en la cantidad demandada:</label>
-              <input
-                type="text"
-                readOnly
-                value={`${percentageChangeInQuantity}%`}
-                placeholder="Cambio porcentual en la cantidad"
-              />
+            <div className="card-body">
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  {/* Columna 1 */}
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label htmlFor="empresa" className="form-label">Empresa</label>
+                      <input type="text" className="form-control" id="empresa" value={empresa} onChange={(e) => setEmpresa(e.target.value)}  />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="cantidad" className="form-label">Cantidad</label>
+                      <input type="number" className="form-control" id="cantidad" value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="precioOfertado" className="form-label">Precio Ofertado</label>
+                      <input type="number" className="form-control" id="precioOfertado" value={precioOfertado} onChange={(e) => setPrecioOfertado(e.target.value)} />
+                    </div>
+                  </div>
+                  {/* Columna 2 */}
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label htmlFor="producto" className="form-label">Producto</label>
+                      <select className="form-select" id="producto" value={producto} onChange={(e) => setProducto(e.target.value)}>
+                        <option value="">Selecciona un producto</option>
+                        <option value="Producto1">Producto 1</option>
+                        <option value="Producto2">Producto 2</option>
+                      </select>
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="direccionEntrega" className="form-label">Dirección de Entrega</label>
+                      <input type="text" className="form-control" id="direccionEntrega" value={direccionEntrega} onChange={(e) => setDireccionEntrega(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="total" className="form-label">Total</label>
+                      <input type="text" className="form-control" id="total" value={total} readOnly />
+                    </div>
+                  </div>
+                </div>
+                {/* Observaciones */}
+                <div className="mb-3">
+                  <label htmlFor="observaciones" className="form-label">Observaciones</label>
+                  <textarea className="form-control" id="observaciones" rows="3" value={observaciones} onChange={(e) => setObservaciones(e.target.value)}></textarea>
+                </div>
+                {/* Botones */}
+                <div className="text-center">
+                  <button type="submit" className="btn btn-primary">Enviar Formulario</button>
+                  <button type="button" className="btn btn-primary mx-2" onClick={handleReset}>Limpiar Formulario</button>
+                  <button type="button" className="btn btn-secondary mx-2" onClick={handleBack}>Regresar al inicio</button>
+                </div>
+              </form>
             </div>
-            <div className={styles.formField}>
-              <label>Elasticidad precio de la demanda (EPD):</label>
-              <input
-                type="text"
-                readOnly
-                value={priceElasticityOfDemand}
-                placeholder="Elasticidad precio de la demanda"
-              />
-            </div>
-          </>
-        )}
-        <div className={styles.formField}>
-        <button onClick={handleBack} className={styles.button}>
-        Regresar al Inicio
-        </button>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
