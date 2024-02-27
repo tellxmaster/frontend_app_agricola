@@ -15,7 +15,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to APP AGRICOLA
+          Modulo de Logistica
         </h1>
 
         <p className={styles.description}>
@@ -24,44 +24,46 @@ export default function Home() {
         </p>
 
         <div className={styles.card}>
-        <h2>Modulo de Demanda</h2>
-        <Link href="/RegisterDemandForm">
-        <button type="button" className={styles.button}>Registrar Demanda</button>
+        <h2>Modulo de Logistica</h2>
+        <Link href="/RegisterTransportistForm">
+        <button type="button" className={styles.button}>Registrar Transportista</button>
         </Link>
 
-        <Link href="/QueryDemandForm">
-        <button type="button" className={styles.button}>Consultar Demanda</button>
+        <Link href="/QueryTransportistForm">
+        <button type="button" className={styles.button}>Consultar Transportistas</button>
+        </Link>
+        </div>
+        <div className={styles.card}>
+        <h2>Modulo de Logistica 2</h2>
+        <Link href="/RegisterTransportForm">
+        <button type="button" className={styles.button}>Registrar Transporte</button>
+        </Link>
+
+        <Link href="/QueryTransportForm">
+        <button type="button" className={styles.button}>Consultar Transporte</button>
         </Link>
         </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <div className={styles.card}>
+        <h2>Modulo de Logistica 3</h2>
+        <Link href="/RegisterUbicationForm">
+        <button type="button" className={styles.button}>Registrar Ubicación</button>
+        </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <Link href="/QueryUbicationForm">
+        <button type="button" className={styles.button}>Consultar Ubicacion</button>
+        </Link>
+        </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+        <div className={styles.card}>
+        <h2>Modulo de Logistica 4</h2>
+        <Link href="/RegisterRoutesForm">
+        <button type="button" className={styles.button}>Registrar Rutas</button>
+        </Link>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <Link href="/QueryRoutesForm">
+        <button type="button" className={styles.button}>Consultar Rutas</button>
+        </Link>
         </div>
       </main>
 
