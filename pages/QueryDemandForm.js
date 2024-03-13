@@ -7,6 +7,7 @@ const demandData = [
   { id: 2, fecha: '2024-02-28', empresa: 'Empresa B', producto: 'Producto 2', cantidad: 200, direccionEntrega: 'Avenida Siempre Viva 742', observaciones: 'Entregar por la tarde', precioOfertado: '$200' },
   { id: 3, fecha: '2024-03-01', empresa: 'Empresa C', producto: 'Producto 3', cantidad: 300, direccionEntrega: 'Plaza Central 456', observaciones: 'Confirmar un día antes', precioOfertado: '$300' },
   { id: 4, fecha: '2024-01-01', empresa: 'Empresa D', producto: 'Producto 4', cantidad: 400, direccionEntrega: 'Patio Central ', observaciones: 'Confirmar un día despues', precioOfertado: '$400' },
+  { id: 5, fecha: '2024-01-01', empresa: 'Empresa D', producto: 'Producto 4', cantidad: 400, direccionEntrega: 'Patio Central ', observaciones: 'Confirmar un día despues', precioOfertado: '$400' },
 ];
 
 const QueryDemandForm = () => {
